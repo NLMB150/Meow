@@ -1,84 +1,205 @@
+<!DOCTYPE html>
 <html>
 <head>
-  <title>Elon's Favorite Space Fun Site</title>
+  <title>Awesome Website 2.0</title>
   <style>
     body {
-      background: linear-gradient(#000, #333);
-      background-size: cover;
+      background-color: #f0f0f0;
+      color: #333;
+      font-family: Arial, sans-serif;
+      cursor: default;
     }
-    
-    .header {
-      background-color: rgba(255,255,255,0.2);
+    header {
+      text-align: center;
+      padding: 10px;
+      background-color: #333;
       color: #fff;
+    }
+    main {
       text-align: center;
       padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0px 0px 20px #fff;
-      margin: 50px 0;
     }
-    
-    .section {
-      background-color: rgba(255,255,255,0.1);
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0px 0px 20px #fff;
-      margin: 50px 0;
-      position: relative;
+    .rotate {
+      animation: rotation 2s infinite linear;
     }
-    
-    .fact {
-      font-style: italic;
-      font-size: 20px;
-      color: #fff;
+    .blink {
+      animation: blinker 1s linear infinite;
     }
-    
-    .star {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background-color: #fff;
-      animation: shine 1s ease-in-out infinite alternate;
+    .zoom {
+      transition: transform 0.3s;
     }
-    
-    @keyframes shine {
+    .zoom:hover {
+      transform: scale(1.1);
+    }
+    #email {
+      width: 200px;
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    #submitButton {
+      display: none;
+    }
+    @keyframes rotation {
       from {
-        transform: scale(1);
+        transform: rotate(0deg);
       }
       to {
-        transform: scale(1.5);
+        transform: rotate(359deg);
+      }
+    }
+    @keyframes blinker {
+      50% {
+        opacity: 0;
+      }
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+    .modal-content {
+      background-color: #fff;
+      margin: 10% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      border-radius: 5px;
+      max-width: 600px;
+    }
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .close:hover,
+    .close:focus {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .rainbow-text {
+      background-image: linear-gradient(45deg, #f00, #ff0, #0f0, #0ff, #00f, #f0f, #f00);
+      background-size: 800% 800%;
+      animation: rainbowAnimation 8s infinite;
+      color: transparent;
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+    @keyframes rainbowAnimation {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .floating-heart {
+      display: inline-block;
+      animation: floatHeart 2s infinite linear;
+      font-size: 20px;
+    }
+    @keyframes floatHeart {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-20px);
       }
     }
   </style>
+  <script>
+    window.onload = function() {
+      alert("Welcome to our website!!!");
+    }
+    window.onmousemove = function(e) {
+      if (e.clientX > window.innerWidth / 2) {
+        alert("Don't leave me!!!");
+      }
+    }
+    function showStillThereModal() {
+      var modal = document.getElementById("stillThereModal");
+      modal.style.display = "block";
+    }
+    function hideStillThereModal() {
+      var modal = document.getElementById("stillThereModal");
+      modal.style.display = "none";
+    }
+    setTimeout(showStillThereModal, 15000);
+    function makeFullScreen() {
+      if (document.documentElement.requestFullscreen) {
+        document.documentElement.requestFullscreen();
+      } else if (document.documentElement.mozRequestFullScreen) { /* Firefox */
+        document.documentElement.mozRequestFullScreen();
+      } else if (document.documentElement.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+        document.documentElement.webkitRequestFullscreen();
+      } else if (document.documentElement.msRequestFullscreen) { /* IE/Edge */
+        document.documentElement.msRequestFullscreen();
+      }
+    }
+    function randomColor() {
+      var letters = '0123456789ABCDEF';
+      var color = '#';
+      for (var i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+      }
+      return color;
+    }
+    function changeBackgroundColor() {
+      var body = document.querySelector('body');
+      body.style.backgroundColor = randomColor();
+    }
+    setInterval(changeBackgroundColor, 3000);
+  </script>
 </head>
-<body>
-  <div class="header">
-    <h1>Space Fun Facts</h1>
-  </div>
-  
-  <div class="section">
-    <p class="fact">The first object created by humans that reached interstellar space was the Voyager 1 probe, which was launched in 1977.</p>
-    <div class="star"></div>
-  </div>
-  
-  <div class="section">
-    <p class="fact">The largest known star in the universe is UY Scuti, which is over 1,700 times larger than our own sun.</p>
-    <div class="star"></div>
-  </div>
-  
-  <div class="section">
-    <p class="fact">The first human-made object to land on the moon was the Soviet Union's Luna 2 probe in 1959.</p>
-    <div class="star"></div>
-  </div>
-  
-  <div class="header">
-    <h2>Discover More</h2>
-  </div>
-  
-  <div class="section">
-    <button>Learn More About Space</button>
-  </div>
+<body onload="makeFullScreen();">
+  <header>
+    <h1 class="rotate">Welcome to Awesome Website 2.0!</h1>
+  </header>
+  <main>
+    <p class="blink">This site is under construction. Check back soon for updates!</p>
+    <a href="#">Click here for a free iPhone!!!</a>
+    <br>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" frameborder="0" allowfullscreen></iframe>
+    <br>
+    <img class="zoom" src="https://via.placeholder.com/150" />
+    <img class="zoom" src="https://via.placeholder.com/150" />
+    <img class="zoom" src="https://via.placeholder.com/150" />
+    <form>
+      <label for="email">Enter your email for updates:</label>
+      <input type="email" id="email" name="email" placeholder="example@example.com">
+      <input type="submit" id="submitButton" value="Submit">
+    </form>
+    <div style="position:fixed; bottom:20px; right:20px; width:200px; height:200px; background:url('https://www.pngkey.com/png/detail/42-426449_download-rick-astley-never-gonna-give-you-up.png'); background-size:cover;"></div>
+    <div id="stillThereModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="hideStillThereModal()">&times;</span>
+        <h2>Hey, are you still there?</h2>
+        <p>We noticed you've been on our website for a while. Would you like to continue exploring?</p>
+        <button onclick="hideStillThereModal()">Yes, keep me here</button>
+        <button onclick="window.location.reload()">No, I'm leaving</button>
+      </div>
+    </div>
+    <script>
+      function createConfetti() {
+        var confetti = document.createElement("div");
+        confetti.innerHTML = "&#10084;";
+        confetti.style.position = "fixed";
+        confetti.style.left = Math.random() * 100 + "vw";
+        confetti.style.animation = "fallingConfetti 3s linear";
+        confetti.style.color = randomColor();
+        document.body.appendChild(confetti);
+
+        setTimeout(function() {
+          confetti.remove();
+        }, 3000);
+      }
+
+      setInterval(createConfetti, 500);
+    </script>
+  </main>
 </body>
-</html>
