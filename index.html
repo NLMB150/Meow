@@ -1,205 +1,195 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Awesome Website 2.0</title>
-  <style>
-    body {
-      background-color: #f0f0f0;
-      color: #333;
-      font-family: Arial, sans-serif;
-      cursor: default;
-    }
-    header {
-      text-align: center;
-      padding: 10px;
-      background-color: #333;
-      color: #fff;
-    }
-    main {
-      text-align: center;
-      padding: 20px;
-    }
-    .rotate {
-      animation: rotation 2s infinite linear;
-    }
-    .blink {
-      animation: blinker 1s linear infinite;
-    }
-    .zoom {
-      transition: transform 0.3s;
-    }
-    .zoom:hover {
-      transform: scale(1.1);
-    }
-    #email {
-      width: 200px;
-      padding: 5px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-    #submitButton {
-      display: none;
-    }
-    @keyframes rotation {
-      from {
-        transform: rotate(0deg);
-      }
-      to {
-        transform: rotate(359deg);
-      }
-    }
-    @keyframes blinker {
-      50% {
-        opacity: 0;
-      }
-    }
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 1;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      overflow: auto;
-      background-color: rgba(0, 0, 0, 0.7);
-    }
-    .modal-content {
-      background-color: #fff;
-      margin: 10% auto;
-      padding: 20px;
-      border: 1px solid #888;
-      border-radius: 5px;
-      max-width: 600px;
-    }
-    .close {
-      color: #aaa;
-      float: right;
-      font-size: 28px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-    .close:hover,
-    .close:focus {
-      color: #000;
-      text-decoration: none;
-      cursor: pointer;
-    }
-    .rainbow-text {
-      background-image: linear-gradient(45deg, #f00, #ff0, #0f0, #0ff, #00f, #f0f, #f00);
-      background-size: 800% 800%;
-      animation: rainbowAnimation 8s infinite;
-      color: transparent;
-      -webkit-background-clip: text;
-      background-clip: text;
-    }
-    @keyframes rainbowAnimation {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-    .floating-heart {
-      display: inline-block;
-      animation: floatHeart 2s infinite linear;
-      font-size: 20px;
-    }
-    @keyframes floatHeart {
-      0%, 100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-20px);
-      }
-    }
-  </style>
-  <script>
-    window.onload = function() {
-      alert("Welcome to our website!!!");
-    }
-    window.onmousemove = function(e) {
-      if (e.clientX > window.innerWidth / 2) {
-        alert("Don't leave me!!!");
-      }
-    }
-    function showStillThereModal() {
-      var modal = document.getElementById("stillThereModal");
-      modal.style.display = "block";
-    }
-    function hideStillThereModal() {
-      var modal = document.getElementById("stillThereModal");
-      modal.style.display = "none";
-    }
-    setTimeout(showStillThereModal, 15000);
-    function makeFullScreen() {
-      if (document.documentElement.requestFullscreen) {
-        document.documentElement.requestFullscreen();
-      } else if (document.documentElement.mozRequestFullScreen) { /* Firefox */
-        document.documentElement.mozRequestFullScreen();
-      } else if (document.documentElement.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
-        document.documentElement.webkitRequestFullscreen();
-      } else if (document.documentElement.msRequestFullscreen) { /* IE/Edge */
-        document.documentElement.msRequestFullscreen();
-      }
-    }
-    function randomColor() {
-      var letters = '0123456789ABCDEF';
-      var color = '#';
-      for (var i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)];
-      }
-      return color;
-    }
-    function changeBackgroundColor() {
-      var body = document.querySelector('body');
-      body.style.backgroundColor = randomColor();
-    }
-    setInterval(changeBackgroundColor, 3000);
-  </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ae</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background-color: #fafafa;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        header {
+            background-color: #444;
+            color: #fff;
+            padding: 1rem;
+        }
+
+        .content {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background-color: #FF5733;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.5s ease;
+        }
+
+        .button:hover {
+            background-color: #33FF57;
+            transform: rotate(180deg) scale(1.2);
+        }
+
+        .box {
+            width: 150px;
+            height: 150px;
+            background-color: #FFC300;
+            border: 2px solid #333;
+            margin: 2rem auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            transform-style: preserve-3d;
+            transition: transform 0.5s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .box:hover {
+            transform: rotateX(45deg) rotateY(45deg) rotateZ(45deg) scale(1.2);
+            background-color: #FF5733;
+            box-shadow: 0 0 30px rgba(255, 87, 51, 0.6);
+        }
+
+        .hidden {
+            display: none;
+            font-size: 2rem;
+            color: #FF5733;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            font-weight: bold;
+            transform: skewY(15deg);
+        }
+
+        .footer {
+            background-color: #444;
+            color: white;
+            padding: 1rem;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .footer p {
+            margin: 0;
+        }
+
+        .marquee {
+            overflow: hidden;
+            white-space: nowrap;
+            animation: marquee 10s linear infinite;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        .rainbow-background {
+            background: linear-gradient(45deg, #FF5733, #FFC300, #33FF57, #33B5FF, #A633FF, #FF33E9, #FF5733);
+            background-size: 400% 400%;
+            animation: gradientAnimation 10s ease infinite;
+        }
+
+        @keyframes gradientAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+            100% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .floating-div {
+            background-color: rgba(255, 87, 51, 0.6);
+            width: 200px;
+            height: 100px;
+            position: fixed;
+            bottom: 5%;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50px;
+            box-shadow: 0 0 20px rgba(255, 87, 51, 0.8);
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.5s ease, box-shadow 0.3s ease;
+        }
+
+        .floating-div:hover {
+            background-color: rgba(255, 87, 51, 0.8);
+            transform: translateY(-10px);
+            box-shadow: 0 0 30px rgba(255, 87, 51, 1);
+        }
+
+        .human-touch {
+            font-size: 1.2rem;
+            margin-top: 1rem;
+            color: #777;
+            font-style: italic;
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #FFC300;
+            opacity: 0.7;
+            animation: confetti 3s ease infinite;
+        }
+
+        @keyframes confetti {
+            0% {
+                transform: translateY(0) rotate(0);
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(500px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
 </head>
-<body onload="makeFullScreen();">
-  <header>
-    <h1 class="rotate">Welcome to Awesome Website 2.0!</h1>
-  </header>
-  <main>
-    <p class="blink">This site is under construction. Check back soon for updates!</p>
-    <a href="#">Click here for a free iPhone!!!</a>
-    <br>
-    <iframe width="560" height="315" src="https://via.placeholder.com/1920x1080" frameborder="0" allowfullscreen></iframe>
-    <br>
-    <img class="zoom" src="https://via.placeholder.com/150" />
-    <img class="zoom" src="https://via.placeholder.com/150" />
-    <img class="zoom" src="https://via.placeholder.com/150" />
-    <form>
-      <label for="email">Enter your email for updates:</label>
-      <input type="email" id="email" name="email" placeholder="example@example.com">
-      <input type="submit" id="submitButton" value="Submit">
-    </form>
-    <div style="position:fixed; bottom:20px; right:20px; width:200px; height:200px; background:url('https://www.pngkey.com/png/detail/42-426449_download-rick-astley-never-gonna-give-you-up.png'); background-size:cover;"></div>
-    <div id="stillThereModal" class="modal">
-      <div class="modal-content">
-        <span class="close" onclick="hideStillThereModal()">&times;</span>
-        <h2>Hey, are you still there?</h2>
-        <p>We noticed you've been on our website for a while. Would you like to continue exploring?</p>
-        <button onclick="hideStillThereModal()">Yes, keep me here</button>
-        <button onclick="window.location.reload()">No, I'm leaving</button>
-      </div>
+<body>
+    <header>
+        <h1>🌈 The 🦄</h1>
+    </header>
+    <div class="content">
+        <p>Welcome to the most nonsensical website on the internet! Click the button below to start your adventure.</p>
+        <a href="#" class="button">Click Me!</a>
+        <div class="box">Hover over me!</div>
+        <p class="hidden">🎉 Congratulations, you've uncovered the hidden text! 🎉</p>
+        <div class="marquee">
+            <p>This text is scrolling for no reason at all! 🚀🚀🚀</p>
+        </div>
+        <div class="rainbow-background">
+            <p>This background changes colors because why not? 🌈</p>
+        </div>
+        <div class="floating-div">
+            <p>I'm floating for eternity! 🛸</p>
+        </div>
+        <p class="human-touch">Because even nonsense can have a touch of humanity. ❤️</p>
+        <div class="confetti"></div>
     </div>
-    <script>
-      function createConfetti() {
-        var confetti = document.createElement("div");
-        confetti.innerHTML = "&#10084;";
-        confetti.style.position = "fixed";
-        confetti.style.left = Math.random() * 100 + "vw";
-        confetti.style.animation = "fallingConfetti 3s linear";
-        confetti.style.color = randomColor();
-        document.body.appendChild(confetti);
-
-        setTimeout(function() {
-          confetti.remove();
-        }, 3000);
-      }
-
-      setInterval(createConfetti, 500);
-    </script>
-  </main>
+    <div class="footer">
+        <p>Contact us at: <a href="mailto:contact@uselesswebsite.com">contact@uselesswebsite.com</a></p>
+    </div>
 </body>
+</html>
