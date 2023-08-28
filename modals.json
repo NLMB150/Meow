@@ -8,5 +8,15 @@
 	"Blue": "0",
 	"AMTBTNS": "1",
 	"Button1": "TY"
+	},
+	"76561199023352505": {
+	"Title": "Warning",
+	"Body": "Don't forget to pay your debt of 260c!",
+	"Icon": "Icon_Warning",	
+	"Red": "150",
+	"Green": "50",
+	"Blue": "0",
+	"AMTBTNS": "1",
+	"Button1": "Ok"
 	}
 }
