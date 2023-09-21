@@ -1,111 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mandelbrot with Interference Patterns</title>
+    <title>Creative and Destructive Fractal</title>
     <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            overflow: hidden;
-        }
-
+        /* CSS for the canvas element */
         canvas {
-            width: 100%;
-            height: 100%;
-            position: absolute;
+            border: 1px solid black;
         }
     </style>
 </head>
 <body>
-    <canvas id="universe"></canvas>
+    <canvas id="fractalCanvas" width="800" height="800"></canvas>
 
     <script>
-        const canvas = document.getElementById('universe');
-        const ctx = canvas.getContext('2d');
+        const canvas = document.getElementById("fractalCanvas");
+        const context = canvas.getContext("2d");
+        const maxDepth = 6; // Maximum recursion depth
+        const scale = 0.5; // Scaling factor for each recursive level
 
-        const maxIterations = 1000;
-        const zoomFactor = 500;
-        let offsetX = -canvas.width / 2;
-        let offsetY = -canvas.height / 2;
-
-        function mandelbrot(c) {
-            let z = c;
-            for (let i = 0; i < maxIterations; i++) {
-                z = z.mul(z).add(c);
-                if (z.abs() > 2) {
-                    return i;
-                }
+        // Function to draw the creative and destructive fractal
+        function drawFractal(x, y, size, depth) {
+            if (depth === 0) {
+                return;
             }
-            return maxIterations;
+
+            // Creative: Randomize color and stroke width
+            context.strokeStyle = `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})`;
+            context.lineWidth = Math.random() * 5;
+
+            // Destructive: Remove elements randomly
+            if (Math.random() < 0.2) {
+                return;
+            }
+
+            // Draw a line to a new position
+            const newX = x + Math.random() * size * scale;
+            const newY = y + Math.random() * size * scale;
+            context.beginPath();
+            context.moveTo(x, y);
+            context.lineTo(newX, newY);
+            context.stroke();
+
+            // Recursive call with updated parameters
+            drawFractal(newX, newY, size * scale, depth - 1);
         }
 
-        function interferencePattern(c) {
-            const pattern1 = Math.sin(c.real) * Math.cos(c.imaginary);
-            const pattern2 = Math.cos(c.real) * Math.sin(c.imaginary);
-            return pattern1 + pattern2;
+        // Function to initialize the drawing
+        function initialize() {
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            const startX = canvas.width / 2;
+            const startY = canvas.height / 2;
+            drawFractal(startX, startY, 200, maxDepth);
         }
 
-        function drawFractal(pattern) {
-            for (let x = 0; x < canvas.width; x++) {
-                for (let y = 0; y < canvas.height; y++) {
-                    const real = (x + offsetX) / zoomFactor;
-                    const imaginary = (y + offsetY) / zoomFactor;
-                    const c = new Complex(real, imaginary);
-                    const value = mandelbrot(c) + interferencePattern(c) * 100;
-                    const hue = (value / maxIterations) * 360;
-                    ctx.fillStyle = `hsl(${hue}, 100%, 50%)`;
-                    ctx.fillRect(x, y, 1, 1);
-                }
-            }
-        }
+        // Handle canvas click event (increase depth on click)
+        canvas.addEventListener('click', () => {
+            initialize();
+        });
 
-        function zoom(e) {
-            const zoomFactorChange = 0.1;
-            const x = e.clientX - canvas.getBoundingClientRect().left;
-            const y = e.clientY - canvas.getBoundingClientRect().top;
-
-            offsetX -= (x - canvas.width / 2) / zoomFactor;
-            offsetY -= (y - canvas.height / 2) / zoomFactor;
-            zoomFactor *= e.deltaY > 0 ? (1 + zoomFactorChange) : (1 - zoomFactorChange);
-
-            // Adjust offset to keep the same point under the mouse cursor
-            offsetX += (x - canvas.width / 2) / zoomFactor;
-            offsetY += (y - canvas.height / 2) / zoomFactor;
-
-            // Clear canvas and redraw
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            drawFractal(interferencePattern);
-        }
-
-        canvas.addEventListener('wheel', zoom);
-
-        class Complex {
-            constructor(real, imaginary) {
-                this.real = real;
-                this.imaginary = imaginary;
-            }
-
-            add(other) {
-                return new Complex(this.real + other.real, this.imaginary + other.imaginary);
-            }
-
-            mul(other) {
-                return new Complex(
-                    this.real * other.real - this.imaginary * other.imaginary,
-                    this.real * other.imaginary + this.imaginary * other.real
-                );
-            }
-
-            abs() {
-                return Math.sqrt(this.real * this.real + this.imaginary * this.imaginary);
-            }
-        }
-
-        // Initial rendering
-        drawFractal(interferencePattern);
+        // Initial drawing
+        initialize();
     </script>
 </body>
 </html>
