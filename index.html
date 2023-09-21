@@ -1,43 +1,56 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Quantum Harmonic Nexus Fractal</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fractal Tree Animation</title>
+    <style>
+        canvas {
+            background-color: #222;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
 </head>
 <body>
-    <canvas id="fractalCanvas" width="800" height="800" style="background-color: black;"></canvas>
-    
+    <canvas id="fractalCanvas"></canvas>
+
     <script>
-        // Get the canvas element
-        var canvas = document.getElementById("fractalCanvas");
-        var ctx = canvas.getContext("2d");
-        ctx.strokeStyle = "white";  // Customize the color
+        const canvas = document.getElementById('fractalCanvas');
+        const ctx = canvas.getContext('2d');
+        const canvasWidth = canvas.width = window.innerWidth;
+        const canvasHeight = canvas.height = window.innerHeight;
+        
+        const branchLength = 100;
+        const angle = Math.PI / 6; // Angle between branches
+        
+        function drawBranch(x1, y1, length, angle) {
+            const x2 = x1 + length * Math.cos(angle);
+            const y2 = y1 - length * Math.sin(angle);
 
-        // Define initial parameters
-        var depth = 7;  // Adjust the depth for complexity
-        var length = 300;  // Adjust the initial line length
+            ctx.strokeStyle = '#00FF00'; // Green color for branches
+            ctx.lineWidth = length / 10;
+            
+            ctx.beginPath();
+            ctx.moveTo(x1, y1);
+            ctx.lineTo(x2, y2);
+            ctx.stroke();
 
-        // Function to draw the Quantum Harmonic Nexus Fractal
-        function quantumHarmonicNexus(x, y, angle, depth, length) {
-            if (depth === 0) {
-                return;
-            }
-
-            for (var i = 0; i < 12; i++) {  // Customize the number of branches
-                ctx.beginPath();
-                ctx.moveTo(x, y);
-                x += length * Math.cos(angle);
-                y += length * Math.sin(angle);
-                ctx.lineTo(x, y);
-                ctx.stroke();
-
-                quantumHarmonicNexus(x, y, angle - (Math.PI / 6), depth - 1, length * 0.6);  // Adjust the scaling factor
-                angle += (Math.PI / 3);  // Adjust angle for branching
+            if (length > 10) {
+                drawBranch(x2, y2, length * 0.7, angle + 0.3); // Right branch
+                drawBranch(x2, y2, length * 0.7, angle - 0.3); // Left branch
             }
         }
 
-        // Start drawing the fractal
-        quantumHarmonicNexus(canvas.width / 2, canvas.height / 2, -Math.PI / 2, depth, length);
+        function animate() {
+            ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+            const startX = canvasWidth / 2;
+            const startY = canvasHeight;
+            drawBranch(startX, startY, branchLength, -Math.PI / 2); // Start with a vertical trunk
+            requestAnimationFrame(animate);
+        }
 
+        animate();
     </script>
 </body>
 </html>
