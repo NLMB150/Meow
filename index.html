@@ -3,193 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ae</title>
+    <title>Advanced Fractal Universe</title>
     <style>
-        body {
-            font-family: 'Comic Sans MS', cursive, sans-serif;
-            background-color: #fafafa;
-            text-align: center;
+        body, html {
             margin: 0;
             padding: 0;
+            height: 100%;
             overflow: hidden;
         }
 
-        header {
-            background-color: #444;
-            color: #fff;
-            padding: 1rem;
-        }
-
-        .content {
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-        }
-
-        .button {
-            display: inline-block;
-            padding: 1rem 2rem;
-            background-color: #FF5733;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s ease, transform 0.5s ease;
-        }
-
-        .button:hover {
-            background-color: #33FF57;
-            transform: rotate(180deg) scale(1.2);
-        }
-
-        .box {
-            width: 150px;
-            height: 150px;
-            background-color: #FFC300;
-            border: 2px solid #333;
-            margin: 2rem auto;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-weight: bold;
-            font-size: 1.5rem;
-            cursor: pointer;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-            transform-style: preserve-3d;
-            transition: transform 0.5s ease, background-color 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .box:hover {
-            transform: rotateX(45deg) rotateY(45deg) rotateZ(45deg) scale(1.2);
-            background-color: #FF5733;
-            box-shadow: 0 0 30px rgba(255, 87, 51, 0.6);
-        }
-
-        .hidden {
-            display: none;
-            font-size: 2rem;
-            color: #FF5733;
-            text-transform: uppercase;
-            letter-spacing: 5px;
-            font-weight: bold;
-            transform: skewY(15deg);
-        }
-
-        .footer {
-            background-color: #444;
-            color: white;
-            padding: 1rem;
-            position: fixed;
-            bottom: 0;
+        canvas {
             width: 100%;
-        }
-
-        .footer p {
-            margin: 0;
-        }
-
-        .marquee {
-            overflow: hidden;
-            white-space: nowrap;
-            animation: marquee 10s linear infinite;
-        }
-
-        @keyframes marquee {
-            0% { transform: translateX(100%); }
-            100% { transform: translateX(-100%); }
-        }
-
-        .rainbow-background {
-            background: linear-gradient(45deg, #FF5733, #FFC300, #33FF57, #33B5FF, #A633FF, #FF33E9, #FF5733);
-            background-size: 400% 400%;
-            animation: gradientAnimation 10s ease infinite;
-        }
-
-        @keyframes gradientAnimation {
-            0% {
-                background-position: 0% 50%;
-            }
-            100% {
-                background-position: 100% 50%;
-            }
-        }
-
-        .floating-div {
-            background-color: rgba(255, 87, 51, 0.6);
-            width: 200px;
-            height: 100px;
-            position: fixed;
-            bottom: 5%;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50px;
-            box-shadow: 0 0 20px rgba(255, 87, 51, 0.8);
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.5s ease, box-shadow 0.3s ease;
-        }
-
-        .floating-div:hover {
-            background-color: rgba(255, 87, 51, 0.8);
-            transform: translateY(-10px);
-            box-shadow: 0 0 30px rgba(255, 87, 51, 1);
-        }
-
-        .human-touch {
-            font-size: 1.2rem;
-            margin-top: 1rem;
-            color: #777;
-            font-style: italic;
-        }
-
-        .confetti {
+            height: 100%;
             position: absolute;
-            width: 10px;
-            height: 10px;
-            background-color: #FFC300;
-            opacity: 0.7;
-            animation: confetti 3s ease infinite;
-        }
-
-        @keyframes confetti {
-            0% {
-                transform: translateY(0) rotate(0);
-                opacity: 0.7;
-            }
-            100% {
-                transform: translateY(500px) rotate(360deg);
-                opacity: 0;
-            }
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>🌈 The 🦄</h1>
-    </header>
-    <div class="content">
-        <p>Welcome to the most nonsensical website on the internet! Click the button below to start your adventure.</p>
-        <a href="#" class="button">Click Me!</a>
-        <div class="box">Hover over me!</div>
-        <p class="hidden">🎉 Congratulations, you've uncovered the hidden text! 🎉</p>
-        <div class="marquee">
-            <p>This text is scrolling for no reason at all! 🚀🚀🚀</p>
-        </div>
-        <div class="rainbow-background">
-            <p>This background changes colors because why not? 🌈</p>
-        </div>
-        <div class="floating-div">
-            <p>I'm floating for eternity! 🛸</p>
-        </div>
-        <p class="human-touch">Because even nonsense can have a touch of humanity. ❤️</p>
-        <div class="confetti"></div>
-    </div>
-    <div class="footer">
-        <p>Contact us at: <a href="mailto:contact@uselesswebsite.com">contact@uselesswebsite.com</a></p>
-    </div>
+    <canvas id="universe"></canvas>
+
+    <script>
+        const canvas = document.getElementById('universe');
+        const ctx = canvas.getContext('2d');
+
+        const maxIterations = 100;
+        const zoomFactor = 200;
+        let offsetX = -canvas.width / 2;
+        let offsetY = -canvas.height / 2;
+
+        function mandelbrot(c) {
+            let z = c;
+            for (let i = 0; i < maxIterations; i++) {
+                z = z.mul(z).add(c);
+                if (z.abs() > 2) {
+                    return i;
+                }
+            }
+            return maxIterations;
+        }
+
+        function drawMandelbrot() {
+            for (let x = 0; x < canvas.width; x++) {
+                for (let y = 0; y < canvas.height; y++) {
+                    const real = (x + offsetX) / zoomFactor;
+                    const imaginary = (y + offsetY) / zoomFactor;
+                    const c = new Complex(real, imaginary);
+                    const value = mandelbrot(c);
+                    const brightness = (value / maxIterations) * 255;
+                    ctx.fillStyle = `rgb(${brightness}, ${brightness}, ${brightness})`;
+                    ctx.fillRect(x, y, 1, 1);
+                }
+            }
+        }
+
+        function zoomIn(e) {
+            const zoomAmount = 1.2;
+            const x = e.clientX - canvas.getBoundingClientRect().left;
+            const y = e.clientY - canvas.getBoundingClientRect().top;
+
+            offsetX -= (x - canvas.width / 2) / zoomFactor;
+            offsetY -= (y - canvas.height / 2) / zoomFactor;
+            zoomFactor *= zoomAmount;
+
+            drawMandelbrot();
+        }
+
+        canvas.addEventListener('mousedown', (e) => {
+            canvas.addEventListener('mousemove', zoomIn);
+        });
+
+        canvas.addEventListener('mouseup', () => {
+            canvas.removeEventListener('mousemove', zoomIn);
+        });
+
+        class Complex {
+            constructor(real, imaginary) {
+                this.real = real;
+                this.imaginary = imaginary;
+            }
+
+            add(other) {
+                return new Complex(this.real + other.real, this.imaginary + other.imaginary);
+            }
+
+            mul(other) {
+                return new Complex(
+                    this.real * other.real - this.imaginary * other.imaginary,
+                    this.real * other.imaginary + this.imaginary * other.real
+                );
+            }
+
+            abs() {
+                return Math.sqrt(this.real * this.real + this.imaginary * this.imaginary);
+            }
+        }
+
+        drawMandelbrot();
+    </script>
 </body>
 </html>
