@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Advanced Fractal Universe</title>
+    <title>Mandelbrot with Interference Patterns</title>
     <style>
         body, html {
             margin: 0;
@@ -26,8 +26,8 @@
         const canvas = document.getElementById('universe');
         const ctx = canvas.getContext('2d');
 
-        const maxIterations = 100;
-        const zoomFactor = 200;
+        const maxIterations = 1000;
+        const zoomFactor = 500;
         let offsetX = -canvas.width / 2;
         let offsetY = -canvas.height / 2;
 
@@ -42,39 +42,45 @@
             return maxIterations;
         }
 
-        function drawMandelbrot() {
+        function interferencePattern(c) {
+            const pattern1 = Math.sin(c.real) * Math.cos(c.imaginary);
+            const pattern2 = Math.cos(c.real) * Math.sin(c.imaginary);
+            return pattern1 + pattern2;
+        }
+
+        function drawFractal(pattern) {
             for (let x = 0; x < canvas.width; x++) {
                 for (let y = 0; y < canvas.height; y++) {
                     const real = (x + offsetX) / zoomFactor;
                     const imaginary = (y + offsetY) / zoomFactor;
                     const c = new Complex(real, imaginary);
-                    const value = mandelbrot(c);
-                    const brightness = (value / maxIterations) * 255;
-                    ctx.fillStyle = `rgb(${brightness}, ${brightness}, ${brightness})`;
+                    const value = mandelbrot(c) + interferencePattern(c) * 100;
+                    const hue = (value / maxIterations) * 360;
+                    ctx.fillStyle = `hsl(${hue}, 100%, 50%)`;
                     ctx.fillRect(x, y, 1, 1);
                 }
             }
         }
 
-        function zoomIn(e) {
-            const zoomAmount = 1.2;
+        function zoom(e) {
+            const zoomFactorChange = 0.1;
             const x = e.clientX - canvas.getBoundingClientRect().left;
             const y = e.clientY - canvas.getBoundingClientRect().top;
 
             offsetX -= (x - canvas.width / 2) / zoomFactor;
             offsetY -= (y - canvas.height / 2) / zoomFactor;
-            zoomFactor *= zoomAmount;
+            zoomFactor *= e.deltaY > 0 ? (1 + zoomFactorChange) : (1 - zoomFactorChange);
 
-            drawMandelbrot();
+            // Adjust offset to keep the same point under the mouse cursor
+            offsetX += (x - canvas.width / 2) / zoomFactor;
+            offsetY += (y - canvas.height / 2) / zoomFactor;
+
+            // Clear canvas and redraw
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawFractal(interferencePattern);
         }
 
-        canvas.addEventListener('mousedown', (e) => {
-            canvas.addEventListener('mousemove', zoomIn);
-        });
-
-        canvas.addEventListener('mouseup', () => {
-            canvas.removeEventListener('mousemove', zoomIn);
-        });
+        canvas.addEventListener('wheel', zoom);
 
         class Complex {
             constructor(real, imaginary) {
@@ -98,7 +104,8 @@
             }
         }
 
-        drawMandelbrot();
+        // Initial rendering
+        drawFractal(interferencePattern);
     </script>
 </body>
 </html>
