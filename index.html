@@ -1,62 +1,43 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Animated Cosmic Mandelbrot</title>
-    <style>
-        canvas {
-            width: 100%;
-            height: 100%;
-        }
-    </style>
+    <title>Quantum Harmonic Nexus Fractal</title>
 </head>
 <body>
-    <canvas id="fractalCanvas"></canvas>
-
+    <canvas id="fractalCanvas" width="800" height="800" style="background-color: black;"></canvas>
+    
     <script>
-        const canvas = document.getElementById("fractalCanvas");
-        const ctx = canvas.getContext("2d");
+        // Get the canvas element
+        var canvas = document.getElementById("fractalCanvas");
+        var ctx = canvas.getContext("2d");
+        ctx.strokeStyle = "white";  // Customize the color
 
-        const width = canvas.width;
-        const height = canvas.height;
+        // Define initial parameters
+        var depth = 7;  // Adjust the depth for complexity
+        var length = 300;  // Adjust the initial line length
 
-        let maxIterations = 1000;
-        let zoom = 1;
-        let offsetX = -width / 2;
-        let offsetY = -height / 2;
-
-        function mandelbrot(x, y) {
-            let real = x;
-            let imag = y;
-            for (let i = 0; i < maxIterations; i++) {
-                const real2 = real * real;
-                const imag2 = imag * imag;
-                if (real2 + imag2 > 4) return i / maxIterations;
-                imag = 2 * real * imag + y;
-                real = real2 - imag2 + x;
+        // Function to draw the Quantum Harmonic Nexus Fractal
+        function quantumHarmonicNexus(x, y, angle, depth, length) {
+            if (depth === 0) {
+                return;
             }
-            return 1;
-        }
 
-        function drawMandelbrot() {
-            for (let x = 0; x < width; x++) {
-                for (let y = 0; y < height; y++) {
-                    const real = (x + offsetX) / zoom;
-                    const imag = (y + offsetY) / zoom;
-                    const color = mandelbrot(real, imag);
-                    ctx.fillStyle = `hsl(${color * 360}, 100%, 50%)`;
-                    ctx.fillRect(x, y, 1, 1);
-                }
+            for (var i = 0; i < 12; i++) {  // Customize the number of branches
+                ctx.beginPath();
+                ctx.moveTo(x, y);
+                x += length * Math.cos(angle);
+                y += length * Math.sin(angle);
+                ctx.lineTo(x, y);
+                ctx.stroke();
+
+                quantumHarmonicNexus(x, y, angle - (Math.PI / 6), depth - 1, length * 0.6);  // Adjust the scaling factor
+                angle += (Math.PI / 3);  // Adjust angle for branching
             }
         }
 
-        function animate() {
-            maxIterations += 5; // Increase iterations for more detail
-            zoom *= 1.05; // Zoom in
-            drawMandelbrot();
-            requestAnimationFrame(animate);
-        }
+        // Start drawing the fractal
+        quantumHarmonicNexus(canvas.width / 2, canvas.height / 2, -Math.PI / 2, depth, length);
 
-        animate(); // Start the animation
     </script>
 </body>
 </html>
