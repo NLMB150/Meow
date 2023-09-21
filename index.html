@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Creative and Destructive Fractal</title>
+    <title>Advanced Combined Fractals</title>
     <style>
         /* CSS for the canvas element */
         canvas {
@@ -15,51 +15,97 @@
     <script>
         const canvas = document.getElementById("fractalCanvas");
         const context = canvas.getContext("2d");
-        const maxDepth = 6; // Maximum recursion depth
-        const scale = 0.5; // Scaling factor for each recursive level
+        const maxDepth = 4; // Maximum recursion depth for each fractal
+        const colors = ['#FF5733', '#33FF57', '#5733FF']; // Colors for the triangles
+        const animationSpeed = 500; // Animation speed in milliseconds
 
-        // Function to draw the creative and destructive fractal
-        function drawFractal(x, y, size, depth) {
+        // Function to draw the Sierpinski Triangle
+        function drawSierpinski(x, y, size, depth) {
             if (depth === 0) {
-                return;
+                // Draw a colored triangle
+                context.beginPath();
+                context.moveTo(x, y);
+                context.lineTo(x + size, y);
+                context.lineTo(x + size / 2, y + size * Math.sqrt(3) / 2);
+                context.closePath();
+                context.fillStyle = colors[Math.floor(Math.random() * colors.length)];
+                context.fill();
+            } else {
+                const newSize = size / 2;
+                // Recursively draw three smaller triangles
+                drawSierpinski(x, y, newSize, depth - 1);
+                drawSierpinski(x + newSize, y, newSize, depth - 1);
+                drawSierpinski(x + newSize / 2, y + newSize * Math.sqrt(3) / 2, newSize, depth - 1);
             }
-
-            // Creative: Randomize color and stroke width
-            context.strokeStyle = `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})`;
-            context.lineWidth = Math.random() * 5;
-
-            // Destructive: Remove elements randomly
-            if (Math.random() < 0.2) {
-                return;
-            }
-
-            // Draw a line to a new position
-            const newX = x + Math.random() * size * scale;
-            const newY = y + Math.random() * size * scale;
-            context.beginPath();
-            context.moveTo(x, y);
-            context.lineTo(newX, newY);
-            context.stroke();
-
-            // Recursive call with updated parameters
-            drawFractal(newX, newY, size * scale, depth - 1);
         }
 
-        // Function to initialize the drawing
-        function initialize() {
+        // Function to draw the Koch Snowflake
+        function drawKoch(x1, y1, x5, y5, depth) {
+            if (depth === 0) {
+                context.beginPath();
+                context.moveTo(x1, y1);
+                context.lineTo(x5, y5);
+                context.stroke();
+            } else {
+                const deltaX = (x5 - x1) / 3;
+                const deltaY = (y5 - y1) / 3;
+                const x2 = x1 + deltaX;
+                const y2 = y1 + deltaY;
+                const x3 = x2 + (deltaX * Math.cos(Math.PI / 3) - deltaY * Math.sin(Math.PI / 3));
+                const y3 = y2 + (deltaX * Math.sin(Math.PI / 3) + deltaY * Math.cos(Math.PI / 3));
+                const x4 = x1 + 2 * deltaX;
+                const y4 = y1 + 2 * deltaY;
+
+                drawKoch(x1, y1, x2, y2, depth - 1);
+                drawKoch(x2, y2, x3, y3, depth - 1);
+                drawKoch(x3, y3, x4, y4, depth - 1);
+                drawKoch(x4, y4, x5, y5, depth - 1);
+            }
+        }
+
+        // Function to draw the Dragon Curve
+        function drawDragon(x1, y1, x2, y2, depth) {
+            if (depth === 0) {
+                context.beginPath();
+                context.moveTo(x1, y1);
+                context.lineTo(x2, y2);
+                context.stroke();
+            } else {
+                const deltaX = x2 - x1;
+                const deltaY = y2 - y1;
+                const x3 = x1 + (deltaX * 0.5 - deltaY * 0.5);
+                const y3 = y1 + (deltaX * 0.5 + deltaY * 0.5);
+
+                drawDragon(x1, y1, x3, y3, depth - 1);
+                drawDragon(x2, y2, x3, y3, depth - 1);
+            }
+        }
+
+        // Function to combine all three fractals
+        function combineFractals() {
             context.clearRect(0, 0, canvas.width, canvas.height);
-            const startX = canvas.width / 2;
-            const startY = canvas.height / 2;
-            drawFractal(startX, startY, 200, maxDepth);
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2;
+            
+            // Draw Sierpinski Triangle
+            drawSierpinski(centerX, centerY - 100, 300, maxDepth);
+
+            // Draw Koch Snowflake
+            drawKoch(centerX - 100, centerY + 100, centerX + 100, centerY + 100, maxDepth);
+
+            // Draw Dragon Curve
+            drawDragon(centerX - 100, centerY + 100, centerX + 100, centerY - 100, maxDepth);
         }
 
-        // Handle canvas click event (increase depth on click)
-        canvas.addEventListener('click', () => {
-            initialize();
-        });
+        // Function for continuous animation
+        function animate() {
+            maxDepth++; // Increase depth to see evolving patterns
+            combineFractals();
+            setTimeout(animate, animationSpeed);
+        }
 
-        // Initial drawing
-        initialize();
+        // Start the animation
+        animate();
     </script>
 </body>
 </html>
