@@ -1,52 +1,71 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fractal Tree Animation</title>
+    <title>Mandelbrot Animation</title>
     <style>
         canvas {
-            background-color: #222;
-            display: block;
-            margin: 0 auto;
+            border: 1px solid black;
         }
     </style>
 </head>
 <body>
-    <canvas id="fractalCanvas"></canvas>
-
+    <canvas id="mandelbrotCanvas" width="800" height="800"></canvas>
     <script>
-        const canvas = document.getElementById('fractalCanvas');
+        const canvas = document.getElementById('mandelbrotCanvas');
         const ctx = canvas.getContext('2d');
-        const canvasWidth = canvas.width = window.innerWidth;
-        const canvasHeight = canvas.height = window.innerHeight;
-        
-        const branchLength = 100;
-        const angle = Math.PI / 6; // Angle between branches
-        
-        function drawBranch(x1, y1, length, angle) {
-            const x2 = x1 + length * Math.cos(angle);
-            const y2 = y1 - length * Math.sin(angle);
+        const width = canvas.width;
+        const height = canvas.height;
+        const maxIterations = 100;
+        const zoomFactor = 1.5;
 
-            ctx.strokeStyle = '#00FF00'; // Green color for branches
-            ctx.lineWidth = length / 10;
-            
-            ctx.beginPath();
-            ctx.moveTo(x1, y1);
-            ctx.lineTo(x2, y2);
-            ctx.stroke();
+        let zoom = 1;
+        let offsetX = -width / 2;
+        let offsetY = -height / 2;
 
-            if (length > 10) {
-                drawBranch(x2, y2, length * 0.7, angle + 0.3); // Right branch
-                drawBranch(x2, y2, length * 0.7, angle - 0.3); // Left branch
+        function drawMandelbrot() {
+            for (let x = 0; x < width; x++) {
+                for (let y = 0; y < height; y++) {
+                    const a = map(x, 0, width, -zoom, zoom) + offsetX;
+                    const b = map(y, 0, height, -zoom, zoom) + offsetY;
+
+                    let ca = a;
+                    let cb = b;
+                    let n = 0;
+
+                    while (n < maxIterations) {
+                        const aa = a * a;
+                        const bb = b * b;
+                        const twoab = 2 * a * b;
+
+                        a = aa - bb + ca;
+                        b = twoab + cb;
+
+                        if (Math.abs(a + b) > 16) {
+                            break;
+                        }
+
+                        n++;
+                    }
+
+                    const brightness = map(n, 0, maxIterations, 0, 1);
+                    const color = `hsl(${Math.floor(360 * brightness)}, 100%, 50%)`;
+
+                    ctx.fillStyle = color;
+                    ctx.fillRect(x, y, 1, 1);
+                }
             }
         }
 
+        function map(value, min1, max1, min2, max2) {
+            return min2 + (value - min1) * (max2 - min2) / (max1 - min1);
+        }
+
         function animate() {
-            ctx.clearRect(0, 0, canvasWidth, canvasHeight);
-            const startX = canvasWidth / 2;
-            const startY = canvasHeight;
-            drawBranch(startX, startY, branchLength, -Math.PI / 2); // Start with a vertical trunk
+            zoom *= zoomFactor;
+            offsetX += (width / 2 - offsetX) / zoomFactor;
+            offsetY += (height / 2 - offsetY) / zoomFactor;
+            ctx.clearRect(0, 0, width, height);
+            drawMandelbrot();
             requestAnimationFrame(animate);
         }
 
