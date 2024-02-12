@@ -7,6 +7,12 @@
             "TitleGlowColor": "FFA300"
         },
         {
+            "PlayerID": "7bd1d2cd681d41b6ae5aa768a5b2ab60",
+            "TitleText": "S13 {GrandChampion} Tournament Winner",
+            "TitleColor": "FF2800",
+            "TitleGlowColor": "FF2800"
+        },
+        {
             "PlayerID": "c175cb3612c0483ebc9a832b41492f16",
             "TitleText": "RosexDrmy",
             "TitleColor": "D495DF",
