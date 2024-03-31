@@ -134,6 +134,16 @@
         .invite-button:hover {
             background-color: #4752c4;
         }
+
+        .flex-container {
+            display: flex;
+            align-items: center; /* Adjust alignment as needed */
+            justify-content: space-between; /* Adjust spacing as needed */
+        }
+
+        .server-info, .additional-text {
+            margin: 0 10px; /* Adds spacing around elements, adjust as needed */
+        }
     </style>
 </head>
 <body>
@@ -146,15 +156,15 @@
     </div>
     
     <div id="home" class="content active">
-    <div class="new-text" style="margin-right: 20px;">
-        <!-- Add your new text here -->
-        <p>Join to buy Voltage! Featured by Rocket Sledge, Dylbobz, CoralCoke, LLuxyTrade, KaizenStore, and many more!</p>
-    </div>
         <div class="discord-invite">
-        <div class="server-info">
-            <img src="https://volt-cdn.voltage.gay/TransparentIcon.png" alt="Server Icon" class="server-icon">
-            <div>
+        <div class="flex-container">
+            <div class="server-info">
+                <img src="https://volt-cdn.voltage.gay/TransparentIcon.png" alt="Server Icon" class="server-icon">
                 <div>Voltage Admissions</div>
+            </div>
+            <!-- New text content goes here -->
+            <div class="additional-text">
+                <p>Your new text here. This will appear to the right of the server information within the home div.</p>
             </div>
         </div>
         <a href="https://discord.gg/bUpnSweAV5" class="invite-button" target="_blank">Join The Server</a>
