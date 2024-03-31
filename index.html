@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Voltage - Rocket League Tool</title>
+    <title>Voltage - Rocket League Tool/Modification</title>
     <link rel="icon" href="https://volt-cdn.voltage.gay/TransparentIcon.png" type="image/x-icon">
     <style>
         body, html {
@@ -79,6 +79,20 @@
         .cta-button:hover {
             background-color: #0056a3;
         }
+        .aspect-ratio-container {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+        }
+
+        .aspect-ratio-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
     </style>
 </head>
 <body>
@@ -91,7 +105,8 @@
     </div>
     
     <div id="home" class="content active">
-        <a href="https://discord.gg/bUpnSweAV5" class="cta-button">Join Our Discord</a>
+        <h1>Voltage</h1>
+        <a href="https://discord.gg/bUpnSweAV5" class="cta-button">Join Our Community</a>
     </div>
     
     <div id="plugins" class="content">
@@ -99,9 +114,14 @@
         <p>Explore our cutting-edge plugins tailored for Rocket League. Get early access and help shape the future of gaming enhancements.</p>
     </div>
 
-    <div id="showcase" class="content">
+    <div id="video" class="content">
         <h1>Showcase Video</h1>
-        <iframe src="https://www.youtube.com/embed/M8YLesqfrYE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+    <div id="video" class="content">
+        <h1>Showcase Video</h1>
+        <div class="aspect-ratio-container">
+            <iframe src="https://www.youtube.com/embed/M8YLesqfrYE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
     </div>
     
     <div class="footer">
