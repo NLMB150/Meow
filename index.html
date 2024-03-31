@@ -1,111 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="icon" type="image/x-icon" href="LGL_LOGO_NEW.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-    <title>Voltage</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voltage - Rocket League Toolkit</title>
     <style>
         body {
-            font-family: 'Roboto', sans-serif;
             margin: 0;
-            padding: 0;
-            background-color: #f0f0f0;
+            font-family: 'Arial', sans-serif;
+            background-color: #121212;
+            color: #ffffff;
         }
-        .tab-bar {
-            background-color: #333;
-            color: #fff;
-            padding: 10px 20px;
+        .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            background-color: #1e1e1e;
+            padding: 0 20px;
         }
-        .watermark {
-            margin: 0;
-        }
-        .watermark-main {
-            font-weight: bold;
-        }
-        .tab-buttons {
+        .navbar-logo {
             display: flex;
+            align-items: center;
         }
-        .tab-button {
-            background-color: #555;
-            border: none;
-            color: white;
-            padding: 10px 20px;
-            margin-left: 10px;
-            cursor: pointer;
-            transition: background-color 0.3s;
+        .navbar-logo img {
+            height: 40px;
+            margin-right: 10px;
         }
-        .tab-button:hover {
-            background-color: #777;
+        .navbar a {
+            color: #ffffff;
+            text-decoration: none;
+            margin-left: 20px;
         }
-        .tabcontent {
+        .tab-content {
             display: none;
             padding: 20px;
-            background-color: white;
-            border: 1px solid #ddd;
-            margin-top: 20px;
+            background-color: #242424;
         }
-        .header p {
-            font-size: 24px;
-            color: #333;
+        .tab-content.active {
+            display: block;
         }
-        .header-content p {
-            color: #666;
+        .tab-content h2, .tab-content p {
+            margin: 0 0 20px;
         }
-        .download {
-            background-color: #0084ff;
-            color: white;
-            border: none;
-            padding: 10px 20px;
+        .tab-content a {
+            display: inline-block;
+            background-color: #0061f2;
+            color: #ffffff;
             text-decoration: none;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background-color 0.3s;
+            padding: 10px 15px;
+            border-radius: 5px;
         }
-        .download:hover {
-            background-color: #0056b3;
+        .footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #1e1e1e;
+            color: #ffffff;
         }
     </style>
+    <link rel="icon" type="image/x-icon" href="LGL_LOGO_NEW.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
 </head>
 <body>
-    <script src="script.js"></script>
-
-    <div class="tab-bar">
-        <p class="watermark"><span class="watermark-main">Voltage</span> - Rocket League</p>
-
-        <div class="tab-buttons">
-            <button id="home" class="tab-button" onclick="openTab(event, 'Tab1')">Home</button>
-            <button class="tab-button" onclick="openTab(event, 'Tab2')">Plugins</button>
+    <div class="navbar">
+        <div class="navbar-logo">
+            <img src="LGL_LOGO_NEW.png" alt="Voltage Logo">
+            <h1>Voltage</h1>
+        </div>
+        <div>
+            <a href="#" onclick="openTab('Tab1')">Home</a>
+            <a href="#" onclick="openTab('Tab2')">Plugins</a>
         </div>
     </div>
 
-    <div id="Tab1" class="tabcontent">
-        <div class="header">
-            <p>Best Rocket League Tool</p>
-        </div>
-        <div class="header-content">
-            <p>Rocket League mod with endless possibilities. Allows you to spawn items (and use in game), titles, credits, open drops, and much more.</p>
+    <div id="Tab1" class="tab-content active">
+        <h2>Best Rocket League Tool</h2>
+        <p>Rocket League mod with endless possibilities. Allows you to spawn items (and use in game), titles, credits, open drops, and much more.</p>
+        <a href="https://discord.gg/bUpnSweAV5">Join the Discord!</a>
+    </div>
 
-            <a href="https://discord.gg/bUpnSweAV5">
-                <button class="download">
-                    Join the Discord!
-                </button>
-            </a>
-        </div>
+    <div id="Tab2" class="tab-content">
+        <h2>Voltage Plugins Beta</h2>
+        <p>Explore our range of plugins designed to enhance your Rocket League experience. Stay tuned for updates.</p>
     </div>
-    <div id="Tab2" class="tabcontent">
-        <div class="header">
-            <p>Voltage Plugins Beta</p>
-        </div>
-        <div class="header-content">
-            <!-- Content for Plugins Beta -->
-        </div>
+
+    <div class="footer">
+        <p>&copy; 2024 Voltage - All rights reserved.</p>
     </div>
+
+    <script>
+        function openTab(tabName) {
+            var i, tabcontent;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            document.getElementById(tabName).style.display = "block";
+        }
+    </script>
 </body>
 </html>
