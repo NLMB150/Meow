@@ -111,7 +111,22 @@
         <h1>Plugins Beta</h1>
         <div class="plugin-box">
             <h2>Redeem Code</h2>
-            <pre>{"id": "Codes-RedeemCodes", "version": "1.0", "description": "Edit the drop of the code you are redeeming."}</pre>
+            <pre>{
+	"Pattern": "Codes/RedeemCode",
+	"Incoming": {
+		"Error": delete,
+		"Result": {
+			"Drops": [{
+				"AddedTimestamp": timestamp,
+				"Attributes": [],
+				"InstanceID": "geniid",
+				"ProductID": "1332",
+				"SeriesID": 0,
+				"UpdatedTimestamp": timestamp
+			}]
+		}
+	}
+}</pre>
         </div>
     </div>
 
