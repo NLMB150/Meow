@@ -2267,6 +2267,17 @@
             1
         ]
     },
+    "SpecialEventsConfig": {
+        "Class": "SpecialEventConfig_TA",
+        "StartTime": 1721739600,
+        "EndTime": 1722931200,
+        "BackgroundImageURL": "https:\/\/rl-cdn.psyonix.com\/SpecialEvent\/Images\/SummerRoadtrip\/rl_summerroadtrip_eventscreen_fsd879asduj.jpg",
+        "BackgroundLogoURL": "https:\/\/rl-cdn.psyonix.com\/SpecialEvent\/Images\/SummerRoadtrip\/rl_summerroadtrip_game_eventscreenlogo_dafsv89.png",
+        "BackgroundColor": 6291630,
+        "EventFolderName": "Event.SummerRoadtrip2024",
+        "Subtitle": "Unlock the Tesla Cybertruck!",
+        "Description": "The Tesla Cybertruck is making its electric debut in the Rocket League Arena! Complete Challenges to unlock the Tesla Cybertruck Bundle, Cyber Wheels, and Beast Mode Boost. Hurry and complete the Challenges before these items speed off to the Item Shop!"
+    },
     "PlayerReportConfig": {
         "Class": "PlayerReportConfig_TA",
         "Reasons": [
@@ -6296,7 +6307,7 @@
     "DynamicLogosConfig": {
         "Class": "DynamicLogosConfig_TA",
         "bUseDynamicLogos": true,
-        "LogoURL": "https:\/\/rl-cdn.psyonix.com\/LogoImages\/S15\/rl_s15_Logo_EN_v2_fsid.png"
+        "LogoURL": "https:\/\/rl-cdn.psyonix.com\/LogoImages\/rl_roadtrip_menulogo_sj9d8f7.png"
     },
     "TradeConfig": {
         "Class": "TradeConfig_TA",
@@ -6537,12 +6548,7 @@
                     "10660",
                     "664",
                     "1981",
-                    "5753"
-                ],
-                "XEStatus": "CES_XEItem"
-            },
-            {
-                "ProductIds": [
+                    "5753",
                     "4781",
                     "5268",
                     "5285",
@@ -6575,6 +6581,10 @@
                     "10726",
                     "10727"
                 ],
+                "XEStatus": "CES_XEItem"
+            },
+            {
+                "ProductIds": [],
                 "XEStatus": "CES_Locked"
             }
         ]
@@ -12338,6 +12348,10 @@
                 "Content": "uNEZMTZ90Xm6E+\/PbBOxBNrxQZMaiJ3PpodLHhnt\/K4="
             },
             {
+                "KeyName": "PrimeUpdate51_7060CB1DB66B07E8CBE3E6AAA3DC454B",
+                "Content": "ZcACCb20jLerqTNjhh4a30vISwCPHqvyO+cC6bkP48c="
+            },
+            {
                 "KeyName": "PrimeUpdate51_5E459EEB37CCF7C83748272B436D1D71",
                 "Content": "XEqpdN36FZJslYTbQHSfradnm3zafwBlx2tSUJUTYKg="
             },
@@ -13901,6 +13915,132 @@
                 "Value": "adidas - Striker"
             },
             {
+                "Package": "Products",
+                "Section": "body_future",
+                "Key": "Label",
+                "Value": "Tesla Cybertruck"
+            },
+            {
+                "Package": "Products",
+                "Section": "boost_future",
+                "Key": "Label",
+                "Value": "Beast Mode"
+            },
+            {
+                "Package": "Products",
+                "Section": "engineaudio_future",
+                "Key": "Label",
+                "Value": "Tesla Cybertruck"
+            },
+            {
+                "Package": "Products",
+                "Section": "hat_future_baja",
+                "Key": "Label",
+                "Value": "Starlink + Traction Board"
+            },
+            {
+                "Package": "Products",
+                "Section": "skin_future_baja",
+                "Key": "Label",
+                "Value": "Baja Off-Road"
+            },
+            {
+                "Package": "Products",
+                "Section": "skin_future_camo",
+                "Key": "Label",
+                "Value": "CyberCamo"
+            },
+            {
+                "Package": "Products",
+                "Section": "skin_future_matteblack",
+                "Key": "Label",
+                "Value": "Matte Black"
+            },
+            {
+                "Package": "Products",
+                "Section": "skin_future_stainless",
+                "Key": "Label",
+                "Value": "Stainless Steel"
+            },
+            {
+                "Package": "Products",
+                "Section": "skin_future_stainless_busted",
+                "Key": "Label",
+                "Value": "OMG"
+            },
+            {
+                "Package": "Products",
+                "Section": "wheel_rl153",
+                "Key": "Label",
+                "Value": "Cyber"
+            },
+            {
+                "Package": "Products",
+                "Section": "body_moonflax_sportscar",
+                "Key": "Label",
+                "Value": "Lockjaw"
+            },
+            {
+                "Package": "Products",
+                "Section": "engineaudio_moonflaxsportscar",
+                "Key": "Label",
+                "Value": "Lockjaw"
+            },
+            {
+                "Package": "Products",
+                "Section": "skin_moonflax_sportscar_midnight",
+                "Key": "Label",
+                "Value": "Lockjaw Blackout"
+            },
+            {
+                "Package": "Products",
+                "Section": "skin_moonflax_sportscar_prairieskip",
+                "Key": "Label",
+                "Value": "Lockjaw Heatwave"
+            },
+            {
+                "Package": "Products",
+                "Section": "skin_moonflax_sportscar_strategicspur",
+                "Key": "Label",
+                "Value": "Lockjaw Oasis"
+            },
+            {
+                "Package": "Products",
+                "Section": "skin_moonflax_sportscar_flames",
+                "Key": "Label",
+                "Value": "Flames"
+            },
+            {
+                "Package": "Products",
+                "Section": "skin_moonflax_sportscar_lightning",
+                "Key": "Label",
+                "Value": "Lightning"
+            },
+            {
+                "Package": "Products",
+                "Section": "skin_moonflax_sportscar_stripes",
+                "Key": "Label",
+                "Value": "Stripes"
+            },
+            {
+                "Package": "Products",
+                "Section": "skin_moonflax_sportscar_wings",
+                "Key": "Label",
+                "Value": "Wings"
+            },
+            {
+                "Package": "Products",
+                "Section": "wheel_rl152_sport",
+                "Key": "Label",
+                "Value": "Lockjaw"
+            },
+            {
+                "Package": "Products",
+                "Section": "wheel_rl152_sport_dirty",
+                "Key": "Label",
+                "Value": "Lockjaw Sport"
+            },
+            {
                 "Package": "TAGame",
                 "Section": "MapBase",
                 "Key": "RandomRocketLabsMedley",
@@ -13922,11 +14062,11 @@
         "Class": "BlogConfig_X",
         "Entries": [
             {
-                "Title": "Hop Into Arcade Playlists!",
-                "Description": "New fan-favorite game modes have rotated in! Check out the Arcade Playlist Card in the play menu and load up into a game now.",
-                "ImageURL": "https:\/\/rl-cdn.psyonix.com\/Blog\/Images\/rl_newspannel_key",
-                "StartTime": "2024-07-10 16:10:00",
-                "EndTime": "2024-07-23 16:00:00",
+                "Title": "Earn the Tesla Cybertruck!",
+                "Description": "The Tesla Cybertruck is making its electric debut in the Rocket League Arena! Complete Challenges to unlock the Tesla Cybertruck before it drives into the Item Shop!",
+                "ImageURL": "https:\/\/rl-cdn.psyonix.com\/Blog\/Images\/rl_SRT_CyberTruck_newspanel_W_Logo",
+                "StartTime": "2024-07-23 16:10:00",
+                "EndTime": "2024-07-26 16:00:00",
                 "LinkType": "LinkType_None"
             }
         ],
