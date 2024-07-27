@@ -2276,7 +2276,7 @@
         "BackgroundColor": 6291630,
         "EventFolderName": "Event.SummerRoadtrip2024",
         "Subtitle": "Unlock the Tesla Cybertruck!",
-        "Description": "The Tesla Cybertruck is making its electric debut in the Rocket League Arena! Complete Challenges to unlock the Tesla Cybertruck Bundle, Cyber Wheels, and Beast Mode Boost. Hurry and complete the Challenges before these items speed off to the Item Shop!"
+        "Description": "The Tesla Cybertruck is making its electric debut in the Rocket League Arena! Complete Challenges to unlock the Tesla Cybertruck Bundle, Cyber Wheels, and Beast Mode Boost. New Challenges will release on 7\/26 and 7\/31 to unlock the full set of items. Complete them all before the Cybertruck speeds off to the Item Shop!"
     },
     "PlayerReportConfig": {
         "Class": "PlayerReportConfig_TA",
@@ -4816,6 +4816,10 @@
             "MX_OST_Monstercat2024.MazareAndLastNightSavedMyLife_TidalWave_RLedit",
             "MX_OST_Monstercat2024.MazareAndStoryUntold_TheLosersClub",
             "MX_OST_Monstercat2024.MazareAndStoryUntold_TheLosersClub_RLedit",
+            "MX_OST_Monstercat2024.SolomonFrance_Magazine_featRIENK",
+            "MX_OST_Monstercat2024.SolomonFrance_Magazine_featRIENK_RLedit",
+            "MX_OST_Monstercat2024.SolomonFranceAndHailure_Crisis",
+            "MX_OST_Monstercat2024.SolomonFranceAndHailure_Crisis_RLedit",
             "mx_anthems_rp8.Anthem_DnB_Stadium_MVP",
             "mx_anthems_rp8.Anthem_House_Funky_MVP",
             "mx_anthems_rp8.Anthem_House_Tropical_MVP",
@@ -4921,15 +4925,15 @@
         "Theme": {
             "TitleTracks": [
                 {
-                    "Track": "AkSoundCue'MX_OST_Monstercat2024.JustAGentAndNevve_OpenSpaacesVIP_RLedit'",
-                    "Icon": "Texture2D'UI_MusicPlaylistThumbs.ArtistSingles.JustAGentAndNevve_OpenSpaacesVIP'"
+                    "Track": "AkSoundCue'MX_OST_Monstercat2024.SolomonFrance_Magazine_featRIENK_RLedit'",
+                    "Icon": "Texture2D'UI_MusicPlaylistThumbs.ArtistSingles.SolomonFrance_Magazine'"
                 },
                 {
-                    "Track": "AkSoundCue'MX_OST_Monstercat2024.MazareAndStoryUntold_TheLosersClub'",
-                    "Icon": "Texture2D'UI_MusicPlaylistThumbs.ArtistSingles.Mazare_TheLosersClubEP'"
+                    "Track": "AkSoundCue'MX_OST_Monstercat2024.SolomonFranceAndHailure_Crisis'",
+                    "Icon": "Texture2D'UI_MusicPlaylistThumbs.ArtistSingles.SolomonFrance_Magazine_Crisis'"
                 }
             ],
-            "NeverPlayInFirstTracklist": "AkSoundCue'MX_OST_Monstercat2024.JustAGentAndNevve_OpenSpaacesVIP'",
+            "NeverPlayInFirstTracklist": "AkSoundCue'MX_OST_Monstercat2024.SolomonFrance_Magazine_featRIENK'",
             "DefaultIcon": "Texture2D'UI_MusicPlaylistThumbs.ArtistSingles.Duumu_Blinded'",
             "KonamiCode": {
                 "Track": "AkSoundCue'MX_MainMenu.MX_AdamBurgess_SARPBCTheme'",
@@ -5063,6 +5067,14 @@
                         {
                             "Track": "AkSoundCue'MX_OST_Monstercat2024.MazareAndStoryUntold_TheLosersClub'",
                             "Icon": "Texture2D'UI_MusicPlaylistThumbs.ArtistSingles.Mazare_TheLosersClubEP'"
+                        },
+                        {
+                            "Track": "AkSoundCue'MX_OST_Monstercat2024.SolomonFrance_Magazine_featRIENK'",
+                            "Icon": "Texture2D'UI_MusicPlaylistThumbs.ArtistSingles.SolomonFrance_Magazine'"
+                        },
+                        {
+                            "Track": "AkSoundCue'MX_OST_Monstercat2024.SolomonFranceAndHailure_Crisis'",
+                            "Icon": "Texture2D'UI_MusicPlaylistThumbs.ArtistSingles.SolomonFrance_Magazine_Crisis'"
                         }
                     ]
                 },
@@ -12392,12 +12404,20 @@
                 "Content": "IxG8ya6auUIXcGwHKQvbUCLv03JaO5uwqZPhafq1cNo="
             },
             {
+                "KeyName": "PrimeUpdate51_A54671833BCDD6E98C438E0832719B1E",
+                "Content": "B18fcz8HDNDai6yzwAcJ4cJrArJD7xVeJnW5+VffOp0="
+            },
+            {
                 "KeyName": "PrimeUpdate51_041169E1E5A539744C254245E5F486C0",
                 "Content": "l9RMY4PgBZQPQW4Y+1VNfY4aYtk+dsnIAcYY1exYwOI="
             },
             {
                 "KeyName": "PrimeUpdate51_CDB06895A851F961C0E1660D55042C49",
                 "Content": "3sRNLalVYb\/upTzhFnfdLbyiV1zLhy\/9+7xMeUwz7H4="
+            },
+            {
+                "KeyName": "PrimeUpdate51_290D923ED0F506910EB8B699443649A9",
+                "Content": "5+xf2k7zHw1cQyRYgZ9t+3Vm7ddmkFZGaD5F30yXL3c="
             },
             {
                 "KeyName": "PrimeUpdate51_CF44EA9C716C51BACFA562E98EC359AA",
@@ -12468,12 +12488,32 @@
                 "Content": "DBlNDbZS4cI8nBum6qoHAGM+yUp1RsN0IFo3EVWxgEI="
             },
             {
+                "KeyName": "PrimeUpdate51_56EDDA5440735216B8235124F7AFC5A3",
+                "Content": "1e9\/yuo\/31w\/RrpO4\/ri+NxW6UVCQ4x9V91iKdTuPGI="
+            },
+            {
+                "KeyName": "PrimeUpdate51_48A2E63062D69D4522F2A41F844B6E82",
+                "Content": "Qs2DoUAzvkLleJViUb\/16VBDKYd9Yx0GvjDYm3jKYw0="
+            },
+            {
+                "KeyName": "PrimeUpdate51_8D30830DACA89B85BEB9593A85D799F5",
+                "Content": "E\/bDkXHNURaWvOT3XsGbnJaENWTQtZqcTD\/Z1lLJCHI="
+            },
+            {
+                "KeyName": "PrimeUpdate51_BF35D02A6E25F0A14B121BE579A7C32A",
+                "Content": "aNTvEV\/B2LmAoK6dRleJJP6cIMMqWTKZzbf2Q3jakUM="
+            },
+            {
                 "KeyName": "PrimeUpdate51_50CB10F941DA7DCF8B7FB90300351704",
                 "Content": "dSYklJPENaB7niBuFTJ9q4Lpv0wE4KEWf+qT8rAU55I="
             },
             {
                 "KeyName": "PrimeUpdate51_2F1B6BE2AB8FB8B5C4DA65A4BA8DFE01",
                 "Content": "3TO\/YFwmdwInMr4KutCfqwvcE+10AKONIPL1Fs0RjaE="
+            },
+            {
+                "KeyName": "PrimeUpdate51_F91E3175DB83B285FB094C408D80BB56",
+                "Content": "NDRaLIYyYWQgLWloOkyGB4tJLe9XqKBfbrErkHCQ6rk="
             }
         ]
     },
@@ -13976,6 +14016,66 @@
             },
             {
                 "Package": "Products",
+                "Section": "explosion_murk",
+                "Key": "Label",
+                "Value": "Deadpool Rides Again"
+            },
+            {
+                "Package": "Products",
+                "Section": "hat_murk",
+                "Key": "Label",
+                "Value": "Deadpool's Chimichanga"
+            },
+            {
+                "Package": "Products",
+                "Section": "playerbanner_murk",
+                "Key": "Label",
+                "Value": "Deadpool"
+            },
+            {
+                "Package": "Products",
+                "Section": "skin_grain_murk",
+                "Key": "Label",
+                "Value": "Merc with a Motor"
+            },
+            {
+                "Package": "Products",
+                "Section": "skin_musclecar_murk",
+                "Key": "Label",
+                "Value": "Merc with a Motor"
+            },
+            {
+                "Package": "Products",
+                "Section": "skin_octane_murk",
+                "Key": "Label",
+                "Value": "Merc with a Motor"
+            },
+            {
+                "Package": "Products",
+                "Section": "skin_scarab_murk",
+                "Key": "Label",
+                "Value": "Scarabpool"
+            },
+            {
+                "Package": "Products",
+                "Section": "skin_squash_murk",
+                "Key": "Label",
+                "Value": "Merc with a Motor"
+            },
+            {
+                "Package": "Products",
+                "Section": "skin_vanquish_murk",
+                "Key": "Label",
+                "Value": "El Guero Taqueria"
+            },
+            {
+                "Package": "Products",
+                "Section": "wheel_murk",
+                "Key": "Label",
+                "Value": "Wade Carefully"
+            },
+            {
+                "Package": "Products",
                 "Section": "body_moonflax_sportscar",
                 "Key": "Label",
                 "Value": "Lockjaw"
@@ -14063,11 +14163,27 @@
         "Entries": [
             {
                 "Title": "Earn the Tesla Cybertruck!",
-                "Description": "The Tesla Cybertruck is making its electric debut in the Rocket League Arena! Complete Challenges to unlock the Tesla Cybertruck before it drives into the Item Shop!",
-                "ImageURL": "https:\/\/rl-cdn.psyonix.com\/Blog\/Images\/rl_SRT_CyberTruck_newspanel_W_Logo",
-                "StartTime": "2024-07-23 16:10:00",
-                "EndTime": "2024-07-26 16:00:00",
-                "LinkType": "LinkType_None"
+                "Description": "Complete Challenges to unlock the Tesla Cybertruck! New Challenges release on 7\/26 and 7\/31 to unlock the full set of items.",
+                "ImageURL": "https:\/\/rl-cdn.psyonix.com\/Blog\/Images\/rl_SRT_CyberTruck_news-panel_3-panel",
+                "StartTime": "2024-07-26 16:10:01",
+                "EndTime": "2024-07-31 16:00:00",
+                "LinkType": "LinkType_Event"
+            },
+            {
+                "Title": "Deadpool in the Item Shop",
+                "Description": "Time to make chimichangas! Deadpool is taking over the Item Shop, cruise by before time runs out!",
+                "ImageURL": "https:\/\/rl-cdn.psyonix.com\/Blog\/Images\/rl_Deadpool_TRI-news_panel",
+                "StartTime": "2024-07-26 16:10:02",
+                "EndTime": "2024-07-31 16:00:00",
+                "ShopID": 312
+            },
+            {
+                "Title": "Get the Rocket Pass",
+                "Description": "Get the Season 15 Rocket Pass and drift your way through 70+ tiers of progression!",
+                "ImageURL": "https:\/\/rl-cdn.psyonix.com\/Blog\/Images\/rl_s15_tripanel_hero",
+                "StartTime": "2024-07-26 16:10:03",
+                "EndTime": "2024-07-31 16:00:00",
+                "LinkType": "LinkType_RocketPass"
             }
         ],
         "MotD": "<br>"
